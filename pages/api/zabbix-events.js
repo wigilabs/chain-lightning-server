@@ -11,16 +11,21 @@ const handler = (req, res) => {
     .end((err, response) => {
       events = JSON.parse(response.text).results[0].events
       console.log('events: ', events)
-      event = [{
+      event = [
+        {
           name: 'SSH',
           value: 1
-        }, {
-            name: 'HTTP',
-            value: 1
-        }, {
-            name: 'Agent',
-            value: 1
-        }]
+        }, 
+        {
+          name: 'HTTP',
+          value: 1
+        }, 
+        {
+          name: 'Agent',
+          value: 1
+        }
+      ]
+      
       return res.json(events);
     });
     
