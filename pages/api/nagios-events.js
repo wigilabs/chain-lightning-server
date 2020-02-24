@@ -1,9 +1,7 @@
 const superagent = require('superagent');
 
 const handler = (req, res) => {
-
   let events
-
   superagent
     .get('https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT+*+FROM+NagiosReport+SINCE+5+minutes+ago')
     .set('X-Query-Key', 'NRIQ-j7zJFckfarn9jsOB-nPscK5H6z0QCgHd')
@@ -11,7 +9,6 @@ const handler = (req, res) => {
     .end((err, response) => {
       events = JSON.parse(response.text).results[0].events
       console.log('events: ', events)
-
       events = [
           {name: 'Current Load',    value: 1},
           {name: 'Current Users',   value: 1},
@@ -22,7 +19,6 @@ const handler = (req, res) => {
           {name: 'Swap Usage',      value: 1},
           {name: 'Total Processes', value: 1},
         ]
-
       return res.json(events);
     });
 };
