@@ -10,60 +10,20 @@ const handler = (req, res) => {
       events = JSON.parse(response.text).results[0].events
       console.log('events: ', events)
 
-
-      let valueSSH  = (events[0].description == 'is unreachable') ? 0 : 1
-      let valueHTTP = (events[1].description == 'is unreachable') ? 0 : 1
-      let valueHost = (events[2].description == 'is unreachable') ? 0 : 1
+      let valueSSH  = (events[0].description.includes('is unreachable')) ? 0 : 1
+      let valueHTTP = (events[1].description.includes('is unreachable')) ? 0 : 1
+      let valueHost = (events[2].description.includes('is unreachable')) ? 0 : 1
 
       console.log('valueSSH: ', valueSSH)
       console.log('valueHTTP: ', valueHTTP)
       console.log('valueHost: ', valueHost)
-
 
       let ret = [
         {name: 'SSH',  value: valueSSH},
         {name: 'HTTP', value: valueHTTP},
         {name: 'Host', value: valueHost}
       ]
-
       return res.json(ret);
-
-
-      // events.forEach((element, i) => {
-
-      //   let description = element.description
-      //   console.log('description: ', description)
-
-      // })
-
-//      events.forEach((element, index, array) => {
-//     console.log("=====================================================================")
-//     console.log(index)
-//          delete element.timestamp
-//          switch (index) {
-//              case 0 : //ssh
-//                    element.name=index
-//              case 1 : //http
-//                    element.name=index
-//              case 2 : //agent
-//                    element.name=index
-//                         }
-//     console.log("=====================================================================")
-// });
-      /*events = [
-        {
-          name: 'SSH',
-          value: 1
-        },
-        {
-          name: 'HTTP',
-          value: 1
-        },
-        {
-          name: 'Agent',
-          value: 1
-        }
-              ]*/
     });
 };
 export default handler;
