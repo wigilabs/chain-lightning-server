@@ -1,0 +1,47 @@
+{
+  "modules": {
+    "byIdentifier": {
+      "multi next-client-pages-loader?page=%2F_app&absolutePagePath=next%2Fdist%2Fpages%2F_app! node_modules/next/dist/client/router.js": 0
+    },
+    "usedIds": {
+      "0": 0
+    }
+  },
+  "chunks": {
+    "byName": {
+      "commons": 0,
+      "static/runtime/webpack.js": 1,
+      "framework": 2,
+      "792bc7ae98974652e4698493326a7770d64157f7": 3,
+      "static/fd9GqmwJCFoktdK8a87V1/pages/_app.js": 4,
+      "static/fd9GqmwJCFoktdK8a87V1/pages/_error.js": 5,
+      "static/fd9GqmwJCFoktdK8a87V1/pages/index.js": 6,
+      "static/runtime/main.js": 7,
+      "static/runtime/polyfills.js": 8,
+      "ca521d756fe5226ca8295fc7a49269a2c5455aa0": 9,
+      "static/eZTX0288nTh5BzyqEAYAb/pages/_app.js": 10,
+      "static/eZTX0288nTh5BzyqEAYAb/pages/_error.js": 11,
+      "static/eZTX0288nTh5BzyqEAYAb/pages/index.js": 12,
+      "1caa916c66d8962a26caf21344bf9fe5533e9f02": 3,
+      "static/oU8mldGrMlRBHDgbHytLt/pages/_app.js": 4,
+      "static/oU8mldGrMlRBHDgbHytLt/pages/_error.js": 5,
+      "static/oU8mldGrMlRBHDgbHytLt/pages/index.js": 6,
+      "12071559bef9e374db535b8143853ff420d2f19d": 9,
+      "static/Oz_L0N-HR6thOLO1x3YoS/pages/_app.js": 10,
+      "static/Oz_L0N-HR6thOLO1x3YoS/pages/_error.js": 11,
+      "static/Oz_L0N-HR6thOLO1x3YoS/pages/index.js": 12
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      2,
+      7,
+      8,
+      9
+    ]
+  }
+}
