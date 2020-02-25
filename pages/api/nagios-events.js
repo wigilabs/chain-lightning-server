@@ -8,16 +8,25 @@ const handler = (req, res) => {
     .set('Accept', 'application/json')
     .end((err, response) => {
       events = JSON.parse(response.text).results[0].events
-      console.log('events: ', events)
+      let dObj=events[0]
+      console.log('events: ', dObj)
+      let value_load=dObj['Current Load\n'].includes('CRITICAL') ? 0 : 1
+      let value_users=dObj['Current Users\n'].includes('CRITICAL') ? 0 : 1;
+      let value_http=dObj['HTTP\n'].includes('CRITICAL') ? 0 : 1;
+      let ping_value=dObj['PING\n'].includes('CRITICAL') ? 0 : 1;
+      let root_partition=dObj['Root Partition\n'].includes('CRITICAL') ? 0 : 1;
+      let ssh_value=dObj['SSH\n'].includes('CRITICAL') ? 0 : 1;
+      let swap_value=dObj['Swap Usage\n'].includes('CRITICAL') ? 0 : 1;
+      let total_value=dObj['Total Processes\n'].includes('CRITICAL') ? 0 : 1;
       events = [
-          {name: 'Current Load',    value: 1},
-          {name: 'Current Users',   value: 1},
-          {name: 'HTTP',            value: 0},
-          {name: 'PING',            value: 1},
-          {name: 'Root Partition',  value: 1},
-          {name: 'SSH',             value: 0},
-          {name: 'Swap Usage',      value: 1},
-          {name: 'Total Processes', value: 1},
+          {name: 'Current Load',    value: value_load},
+          {name: 'Current Users',   value: value_users},
+          {name: 'HTTP',            value: value_http},
+          {name: 'PING',            value: ping_value},
+          {name: 'Root Partition',  value: root_partition},
+          {name: 'SSH',             value: ssh_value},
+          {name: 'Swap Usage',      value: swap_value},
+          {name: 'Total Processes', value: total_value},
         ]
       return res.json(events);
     });
