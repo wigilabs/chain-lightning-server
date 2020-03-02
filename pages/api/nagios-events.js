@@ -34,6 +34,25 @@ const handler = (req, res) => {
       let total_value=dObj['Total Processes\n'].includes('CRITICAL') || dObj['Total Processes\n'].includes('WARNING') || dObj['Total Processes\n'].includes('WARNING:') ? 0 : 1;
 	  //total_value=dObj['Total Processes\n'].includes('WARNING') ? 0 : 1;
 	  //total_value=dObj['Total Processes\n'].includes('WARNING:') ? 0 : 1;
+
+
+    let state_load = getState(dObj['Current Load\n'])
+    // console.log('state_load: ', state_load)
+    let state_users = getState(dObj['Current Users\n'])
+    // console.log('state_users: ', state_users)
+    let state_http = getState(dObj['HTTP\n'])
+    // console.log('state_http: ', state_http)
+    let state_ping = getState(dObj['PING\n'])
+    // console.log('state_ping: ', state_ping)
+    let state_root = getState(dObj['Root Partition\n'])
+    // console.log('state_root: ', state_root)
+    let state_ssh = getState(dObj['SSH\n'])
+    // console.log('state_ssh: ', state_ssh)
+    let state_swap = getState(dObj['Swap Usage\n'])
+    // console.log('state_swap: ', state_swap)
+    let state_total = getState(dObj['Total Processes\n'])
+    // console.log('state_total: ', state_total)
+
 	  //detalles
 	  let detail_load=dObj['Current Load\n'];
 	  let detail_users=dObj['Current Users\n'];
@@ -45,14 +64,14 @@ const handler = (req, res) => {
 	  let detail_total=dObj['Total Processes\n'];
 	  //final object
       events = [
-          { name: 'Current Load',    value: value_load, msg: detail_load},
-          { name: 'Current Users',   value: value_users, msg: detail_users },
-          { name: 'HTTP',            value: value_http, msg: detail_http },
-          { name: 'PING',            value: ping_value, msg: detail_ping },
-          { name: 'Root Partition',  value: root_partition, msg: detail_root_patition },
-          { name: 'SSH',             value: ssh_value, msg: detail_ssh },
-          { name: 'Swap Usage',      value: swap_value, msg: detail_swap },
-          { name: 'Total Processes', value: total_value, msg:  detail_total },
+          { name: 'Current Load',    value: value_load, msg: detail_load, state: state_load},
+          { name: 'Current Users',   value: value_users, msg: detail_users, state: state_users},
+          { name: 'HTTP',            value: value_http, msg: detail_http, state: state_http},
+          { name: 'PING',            value: ping_value, msg: detail_ping, state: state_ping},
+          { name: 'Root Partition',  value: root_partition, msg: detail_root_patition, state: state_root},
+          { name: 'SSH',             value: ssh_value, msg: detail_ssh, state: state_ssh},
+          { name: 'Swap Usage',      value: swap_value, msg: detail_swap, state: state_swap},
+          { name: 'Total Processes', value: total_value, msg:  detail_total, state: state_total},
         ]
 	  console.log(events);
       return res.json(events);
