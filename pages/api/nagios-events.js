@@ -1,5 +1,12 @@
 const superagent = require('superagent');
 
+function getState(s) {
+  console.log('getState: ')
+  if(s.includes('CRITICAL')) return 'CRITICAL'
+  if(s.includes('WARNING')) return 'WARNING'
+  return 'OK'
+}
+
 const handler = (req, res) => {
   let events
   superagent
