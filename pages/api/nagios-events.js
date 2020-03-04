@@ -1,10 +1,6 @@
 import Cors from 'micro-cors'
 
-const cors = Cors({
-  allowMethods: ['GET', 'HEAD'],
-})
-
-
+const cors = Cors()
 const superagent = require('superagent');
 
 function getState(s) {
