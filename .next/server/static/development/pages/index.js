@@ -1,7 +1,7 @@
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-/******/ 	var installedModules = require('../../../../ssr-module-cache.js');
+/******/ 	var installedModules = require('../../../ssr-module-cache.js');
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -88,76 +88,62 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/api/zabbix-events.js":
-/*!************************************!*\
-  !*** ./pages/api/zabbix-events.js ***!
-  \************************************/
+/***/ "./pages/index.js":
+/*!************************!*\
+  !*** ./pages/index.js ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const superagent = __webpack_require__(/*! superagent */ "superagent");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/diterevan/Documents/projects/chain-lightning-server/pages/index.js";
 
-const handler = (req, res) => {
-  let events;
-  superagent.get('https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT%20description%20FROM%20ZabbixAgent,%20ZabbixHTTP,%20ZabbixSSH%20limit%203').set('X-Query-Key', 'NRIQ-j7zJFckfarn9jsOB-nPscK5H6z0QCgHd').set('Accept', 'application/json').end((err, response) => {
-    events = JSON.parse(response.text).results[0].events;
-    console.log('events: ', events);
-    let valueSSH = events[0].description.includes('is unreachable') ? 0 : 1;
-    let valueHTTP = events[1].description.includes('is unreachable') ? 0 : 1;
-    let valueHost = events[2].description.includes('is unreachable') ? 0 : 1;
-    console.log('valueSSH: ', valueSSH, 'msg:', events[0].description);
-    console.log('valueHTTP: ', valueHTTP, 'msg:', events[1].description);
-    console.log('valueHost: ', valueHost, 'msg:', events[2].description);
-    let ret = [{
-      name: 'SSH',
-      value: valueSSH,
-      msg: events[0].description
-    }, {
-      name: 'HTTP',
-      value: valueHTTP,
-      msg: events[1].description
-    }, {
-      name: 'Host',
-      value: valueHost,
-      msg: events[2].description
-    }];
-    return res.json(ret);
-  });
-};
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-/* harmony default export */ __webpack_exports__["default"] = (handler);
+function HomePage() {
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    },
+    __self: this
+  }, "Welcome to Next.js!");
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (HomePage);
 
 /***/ }),
 
-/***/ 4:
-/*!******************************************!*\
-  !*** multi ./pages/api/zabbix-events.js ***!
-  \******************************************/
+/***/ 3:
+/*!******************************!*\
+  !*** multi ./pages/index.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/diterevan/Documents/projects/chain-lightning-server/pages/api/zabbix-events.js */"./pages/api/zabbix-events.js");
+module.exports = __webpack_require__(/*! /Users/diterevan/Documents/projects/chain-lightning-server/pages/index.js */"./pages/index.js");
 
 
 /***/ }),
 
-/***/ "superagent":
-/*!*****************************!*\
-  !*** external "superagent" ***!
-  \*****************************/
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("superagent");
+module.exports = require("react");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=zabbix-events.js.map
+//# sourceMappingURL=index.js.map

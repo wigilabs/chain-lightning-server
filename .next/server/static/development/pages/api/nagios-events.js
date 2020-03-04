@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,6 +102,13 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var micro_cors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! micro-cors */ "micro-cors");
+/* harmony import */ var micro_cors__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(micro_cors__WEBPACK_IMPORTED_MODULE_0__);
+
+const cors = micro_cors__WEBPACK_IMPORTED_MODULE_0___default()({
+  allowMethods: ['GET', 'HEAD']
+});
+
 const superagent = __webpack_require__(/*! superagent */ "superagent");
 
 function getState(s) {
@@ -189,13 +196,14 @@ const handler = (req, res) => {
     });
     return res.json(events);
   });
-};
+}; // export default handler;
 
-/* harmony default export */ __webpack_exports__["default"] = (handler);
+
+/* harmony default export */ __webpack_exports__["default"] = (cors(handler));
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************************!*\
   !*** multi ./pages/api/nagios-events.js ***!
   \******************************************/
@@ -204,6 +212,17 @@ const handler = (req, res) => {
 
 module.exports = __webpack_require__(/*! /Users/diterevan/Documents/projects/chain-lightning-server/pages/api/nagios-events.js */"./pages/api/nagios-events.js");
 
+
+/***/ }),
+
+/***/ "micro-cors":
+/*!*****************************!*\
+  !*** external "micro-cors" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("micro-cors");
 
 /***/ }),
 
