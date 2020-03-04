@@ -1,3 +1,7 @@
+import Cors from 'micro-cors'
+
+const cors = Cors()
+
 const superagent = require('superagent');
 const handler = (req, res) => {
   let events
@@ -26,4 +30,5 @@ const handler = (req, res) => {
       return res.json(ret);
     });
 };
-export default handler;
+
+export default cors(handler);
