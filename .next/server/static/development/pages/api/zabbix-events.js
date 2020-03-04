@@ -143,7 +143,7 @@ const handler = (req, res) => {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\fsoler\Desktop\chain-lightning-server\pages\api\zabbix-events.js */"./pages/api/zabbix-events.js");
+module.exports = __webpack_require__(/*! /Users/diterevan/Documents/projects/chain-lightning-server/pages/api/zabbix-events.js */"./pages/api/zabbix-events.js");
 
 
 /***/ }),
