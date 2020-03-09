@@ -6,7 +6,7 @@ const superagent = require('superagent');
 const handler = (req, res) => {
   let events
   superagent
-    .get('https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT+%60_raw%60%2C%60_sourcetype%60%2C%60source%60+FROM+splunkUpdateLogs%2C+splunkApacheAccess%2C+splunkApacheErrors%2C+splunkAuthLogs%2C+splunkHttp%2C+splunkKernel%2C+splunkSystemctl+WHERE+%60_raw%60+NOT+LIKE+%27%25CRON%25%27+LIMIT+6+')
+    .get('https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT+%60_raw%60%2C%60_sourcetype%60%2C%60source%60+FROM+splunkUpdateLogs%2C+splunkApacheAccess%2C+splunkApacheErrors%2C+splunkAuthLogs%2C+splunkHttp%2C+splunkKernel%2C+splunkSystemctl+WHERE+%60_raw%60+NOT+LIKE+%27%25CRON%25%27+LIMIT+5+')
     .set('X-Query-Key', 'NRIQ-j7zJFckfarn9jsOB-nPscK5H6z0QCgHd')
     .set('Accept', 'application/json')
     .end((err, response) => {
@@ -26,19 +26,15 @@ const handler = (req, res) => {
       let name5=events[4]._sourcetype;
       let eval5=events[4]._raw;
       let value5=eval5.includes('not found or unable to stat') || eval5.includes('[:error]') || eval5.includes('deprecated') || eval5.includes('invalid') || eval5.includes('error') ? 0 : 1
-      let name6=events[5]._sourcetype;
-      let eval6=events[5]._raw;
-      let value6=eval6.includes('not found or unable to stat') || eval6.includes('[:error]') || eval6.includes('deprecated') || eval6.includes('invalid') || eval6.includes('error') ? 0 : 1
 
       let parsed = [
         { name: name1,    value: value1,     msg: eval1 },
         { name: name2,    value: value2,     msg: eval2 },
         { name: name3,    value: value3,     msg: eval3 },
         { name: name4,    value: value4,     msg: eval4 },
-        { name: name5,    value: value5,     msg: eval5 },
-        { name: name6,    value: value6,     msg: eval6 }
+        { name: name5,    value: value5,     msg: eval5 }
       ]
-      
+
       console.log(parsed);
       return res.json(parsed);
     });
