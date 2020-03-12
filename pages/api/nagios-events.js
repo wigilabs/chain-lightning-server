@@ -66,6 +66,5 @@ const handler = (req, res) => {
       return res.json(events);
     });
 };
-// export default handler;
 
 export default cors(handler)
